@@ -37,8 +37,11 @@ public class Demo
      public Student getStudentDetails(@PathVariable(name = "name") String name)
      {
 		 System.out.println("Inside MyRestController::backend...");
- 
-        String serverPort = environment.getProperty("local.server.port");
+
+         System.out.println("Inside MyRestController::backend...cooooooooooool");
+
+
+         String serverPort = environment.getProperty("local.server.port");
  
         System.out.println("Port : " + serverPort);
          return new Student(name, "Pune", "MCA");
