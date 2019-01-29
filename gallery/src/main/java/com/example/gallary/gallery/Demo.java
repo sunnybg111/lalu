@@ -47,6 +47,4 @@ public class Demo
          return new Student(name, "Pune", "MCA");
      }
 
-
-
 }
