@@ -36,7 +36,7 @@ public class Demo
      @RequestMapping(value = "/getStudentDetails/{name}")
      public Student getStudentDetails(@PathVariable(name = "name") String name)
      {
-		 System.out.println("Inside MyRestController::backend...");
+		 System.out.println("Inside MyRestController::backendddddddd...");
 
          System.out.println("Inside MyRestController::backend...coooooooooooolll2");
 
