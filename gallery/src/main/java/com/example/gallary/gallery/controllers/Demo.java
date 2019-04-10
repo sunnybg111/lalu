@@ -2,6 +2,8 @@ package com.example.gallary.gallery.controllers;
 
 import com.example.gallary.gallery.domain.Student;
 import com.example.gallary.gallery.service.StudentService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.core.env.Environment;
@@ -17,8 +19,11 @@ import java.util.Date;
 
 @RestController
 @RequestMapping("/rest/demo")
-public class Demo
+public class Demo extends AbstractController
  {
+
+
+     private static final Logger LOG = LoggerFactory.getLogger(Demo.class);
      @Autowired
      StudentService studentService;
 
@@ -27,6 +32,8 @@ public class Demo
      @RequestMapping(value = "/echoStudentName/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
      public String echoStudentName(@PathVariable(name = "name") String name)
      {
+        LOG.debug("Everything is perfect"+name);
+         if(!name.equals("f"))throw new RuntimeException("Error while calculating for lamp");
 	 System.out.println("Inside MyRestController::backend...");
  
         String serverPort = environment.getProperty("local.server.port");
