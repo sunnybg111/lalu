@@ -2,6 +2,8 @@ package com.example.gallary.gallery.controllers;
 
 import com.example.gallary.gallery.domain.Student;
 import com.example.gallary.gallery.service.StudentService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +21,8 @@ import java.util.Date;
 
 @RestController
 @RequestMapping("/rest/demo")
-public class Demo extends AbstractController
+@Api(value="onlinestore", description="Operations pertaining to products in Online Store")
+public class Demo
  {
 
 
@@ -29,11 +32,18 @@ public class Demo extends AbstractController
 
      @Autowired
      Environment environment;
+
+     @ApiOperation(value="This api is returning only hello", response = String.class)
      @RequestMapping(value = "/echoStudentName/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
      public String echoStudentName(@PathVariable(name = "name") String name)
      {
-        LOG.debug("Everything is perfect"+name);
-         if(!name.equals("f"))throw new RuntimeException("Error while calculating for lamp");
+
+         //LOG.trace("A TRACE Messageeeeeeeeeeeeeeee");
+         //LOG.debug("A DEBUG Messageeeeeeeeeeeeeeeeeeeee");
+         LOG.info("An INFO Messageeeeeeeeeeeeeeee");
+         //LOG.warn("A WARN Messageeeeeeeeeeeeeeeeeeeeeeeeeeeee");
+         //LOG.error("An ERROR Messageeeeeeeeeeeeeeeeee");
+         if(!name.equals("cool"))throw new RuntimeException("Error while calculating for lamp");
 	 System.out.println("Inside MyRestController::backend...");
  
         String serverPort = environment.getProperty("local.server.port");
@@ -44,10 +54,17 @@ public class Demo extends AbstractController
      }
 
 
-
+     @ApiOperation(value="This api is returning student details", response = Student.class)
      @RequestMapping(value = "/getStudentDetails/{email}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
      public Student getStudentDetails(@PathVariable(name = "email") String email)
      {
+
+
+         if(!email.equals("cool")) {
+             LOG.info("Everything is perfect"+email);
+
+             throw new RuntimeException("Error while calculating for lamp");
+         }
         Student student= studentService.findByEmail(email);
 
 
