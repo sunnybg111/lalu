@@ -12,7 +12,7 @@ pipeline {
                  steps {
                           dir('demo'){
                                    
-                   git url: 'https://github.com/sunnybg111/lalu.git', branch: 'master'
+                   
                                           bat 'mvn clean install'
                           }
                           
