@@ -8,16 +8,10 @@ pipeline {
     PATH = "C:\\Program Files\\Git\\usr\\bin;C:\\Program Files\\Git\\bin;${env.PATH}"; 
          }
          stages {
-                           
-                 steps {
-                          dir('demo'){
-                                   
-                   
+                 stage('One') {
+                 steps { git url:https://github.com/sunnybg111/lalu.git
                                           bat 'mvn clean install'
-                          }
-                          
                      }
                  }
          }
-
-}
+} 
