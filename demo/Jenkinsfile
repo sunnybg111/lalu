@@ -12,22 +12,18 @@ pipeline {
 
         
                   
-                  
-                 stage('One') {
-                         withMaven(maven:'maven') {
-
-        stage('Checkout') {
-            git url: 'https://github.com/sunnybg111/lalu.git',  branch: 'master'
-        }
+                 
                           
                           
                  steps {
                           dir('demo'){
+                                   
+                                   git url: 'https://github.com/piomin/sample-spring-microservices.git', credentialsId: 'github-piomin', branch: 'master'
                                           bat 'mvn clean install'
                           }
                           
                      }
                  }
          }
-} 
+
 }
