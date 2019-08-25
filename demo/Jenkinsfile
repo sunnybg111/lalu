@@ -12,7 +12,7 @@ pipeline {
                   
                            steps{
                            
-                           git url:'https://github.com/sunnybg111/lalu.git', branch: 'qa'
+                           git url:'https://github.com/sunnybg111/lalu.git', branch: 'develop'
                            }
                   }
                   
